@@ -1,16 +1,17 @@
-package com.example.login.controller;
+package com.devops1.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.example.login.domain.User;
-import com.example.login.repository.UserRepository;
+
+import com.devops1.demo.domain.Users;
+import com.devops1.demo.repository.UsersRepository;
 
 @Controller
 public class LoginController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
 
     @GetMapping("/")
     public String home() {
@@ -19,7 +20,7 @@ public class LoginController {
     @PostMapping("/login")
     @ResponseBody
     public String login(@RequestParam String username, @RequestParam String password) {
-        User user = userRepository.findByUsernameAndPassword(username, password);
+        Users user = userRepository.findByUsernameAndPassword(username, password);
         if (user != null) {
             return "Login Successful! Welcome " + user.getUsername();
         } else {
