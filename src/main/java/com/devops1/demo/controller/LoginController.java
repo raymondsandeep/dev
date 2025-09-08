@@ -15,7 +15,7 @@ public class LoginController {
 
     @GetMapping("/")
     public String home() {
-        return "home.html";
+        return "summa.html";
     }
     @PostMapping("/login")
     @ResponseBody
